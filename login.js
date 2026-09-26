@@ -72,7 +72,7 @@ loginForm.addEventListener("submit", function (event) {
         // Small delay before dashboard
         setTimeout(function () {
 
-            window.location.href = "index.html";
+            window.location.href = "dashboard.html";
 
         }, 800);
 
