@@ -208,6 +208,124 @@ body {
 .dashboard-content {
     padding: 25px 30px;
 }
+/* ================================
+   PROFESSIONAL DASHBOARD UPGRADE
+   ================================ */
+
+.dashboard-content {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.status-card,
+.panel {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.status-card:hover,
+.panel:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+}
+
+/* Status cards */
+
+.status-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.status-card h2 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+/* Monitor */
+
+.monitor-box {
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.monitor-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+
+.simulate-button,
+.reset-button,
+.control-button,
+.export-button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.simulate-button:hover,
+.reset-button:hover,
+.control-button:hover,
+.export-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Live activity */
+
+.live-activity-item {
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.live-activity-item:hover {
+    transform: translateX(4px);
+}
+
+/* Statistics */
+
+.stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Responsive dashboard */
+
+@media (max-width: 900px) {
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .header-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+}
 
 /* ========================================
    STATUS CARDS
