@@ -1,0 +1,858 @@
+/* ========================================
+   HOME SECURITY DASHBOARD
+   ORIGINAL DASHBOARD STYLE
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #172033;
+    min-height: 100vh;
+}
+
+/* ========================================
+   SIDEBAR
+======================================== */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    background: #172033;
+    color: white;
+    padding: 25px 15px;
+    z-index: 100;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 20px;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 13px 15px;
+    color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* ========================================
+   MAIN AREA
+======================================== */
+
+.main {
+    margin-left: 240px;
+    min-height: 100vh;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+    background: white;
+    padding: 22px 30px;
+    border-bottom: 1px solid #e2e8f0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.header-title {
+    flex: 1;
+}
+
+.header h1 {
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: #172033;
+}
+
+.header p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+#date {
+    color: #64748b;
+    font-size: 13px;
+}
+
+#time {
+    color: #172033;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ========================================
+   ADMIN PROFILE
+======================================== */
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding-left: 20px;
+    border-left: 1px solid #e2e8f0;
+}
+
+.admin-avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+    border: 2px solid #2563eb;
+
+    font-size: 20px;
+}
+
+.admin-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.admin-details strong {
+    color: #172033;
+    font-size: 14px;
+}
+
+.admin-details span {
+    color: #16a34a;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* ========================================
+   LOGOUT
+======================================== */
+
+.logout-button {
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #dc2626;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.logout-button:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+}
+
+.logout-button:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   DASHBOARD CONTENT
+======================================== */
+
+.dashboard-content {
+    padding: 25px 30px;
+}
+
+/* ========================================
+   STATUS CARDS
+======================================== */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.status-card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.status-card h3 {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.status-card h2 {
+    font-size: 24px;
+    color: #172033;
+}
+
+.green-text {
+    color: #16a34a !important;
+}
+
+/* ========================================
+   ALARM INDICATOR
+======================================== */
+
+.alarm-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alarm-light {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    display: inline-block;
+
+    background: #16a34a;
+
+    box-shadow:
+        0 0 8px rgba(22, 163, 74, 0.6);
+}
+
+.alarm-active {
+    background: #dc2626;
+
+    box-shadow:
+        0 0 8px rgba(220, 38, 38, 0.8),
+        0 0 18px rgba(220, 38, 38, 0.6);
+
+    animation: alarmPulse 0.8s infinite;
+}
+
+@keyframes alarmPulse {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   ALERT MODE
+======================================== */
+
+body.alert-mode {
+    animation: screenAlert 1s infinite;
+}
+
+@keyframes screenAlert {
+
+    0% {
+        box-shadow:
+            inset 0 0 0 rgba(220, 38, 38, 0);
+    }
+
+    50% {
+        box-shadow:
+            inset 0 0 25px rgba(220, 38, 38, 0.35);
+    }
+
+    100% {
+        box-shadow:
+            inset 0 0 0 rgba(220, 38, 38, 0);
+    }
+}
+
+/* ========================================
+   CONTENT GRID
+======================================== */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+/* ========================================
+   PANELS
+======================================== */
+
+.panel {
+    background: white;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.panel h2 {
+    color: #172033;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.panel p {
+    color: #64748b;
+}
+
+/* ========================================
+   LIVE MOTION MONITOR
+======================================== */
+
+.monitor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.monitor-status {
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background: #dcfce7;
+    color: #15803d;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.monitor-box {
+    text-align: center;
+    padding: 30px 20px;
+
+    background: #f8fafc;
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+}
+
+.monitor-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.monitor-box h2 {
+    margin-bottom: 8px;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.simulate-button,
+.reset-button {
+    padding: 11px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.simulate-button {
+    background: #dc2626;
+    color: white;
+}
+
+.simulate-button:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+}
+
+.reset-button {
+    background: #2563eb;
+    color: white;
+    margin-left: 8px;
+}
+
+.reset-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   SYSTEM INFORMATION
+======================================== */
+
+.system-info {
+    display: grid;
+    gap: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: #64748b;
+}
+
+.info-value {
+    color: #172033;
+    font-weight: 700;
+}
+
+/* ========================================
+   LIVE ACTIVITY
+======================================== */
+
+.live-activity-panel {
+    margin-bottom: 25px;
+}
+
+.live-activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.empty-activity {
+    text-align: center;
+    padding: 30px;
+
+    color: #64748b;
+}
+
+.empty-icon {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.live-activity-item {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    background: #f8fafc;
+
+    border-radius: 8px;
+
+    border: 1px solid #e2e8f0;
+}
+
+.activity-icon {
+    font-size: 22px;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-content h3 {
+    font-size: 14px;
+    color: #172033;
+}
+
+.activity-content p {
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.live-alert-badge,
+.live-ready-badge {
+    padding: 5px 9px;
+    border-radius: 15px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.live-alert-badge {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.live-ready-badge {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+/* ========================================
+   CHART
+======================================== */
+
+.chart-panel {
+    margin-bottom: 25px;
+}
+
+.chart-container {
+    width: 100%;
+    height: 300px;
+    margin-top: 15px;
+}
+
+#motionChart {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   EVENT STATISTICS
+======================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e8f0;
+
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    color: #172033;
+    font-size: 25px;
+}
+
+/* ========================================
+   ACTIVITY LOG
+======================================== */
+
+.activity-table-container {
+    overflow-x: auto;
+}
+
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.activity-table th,
+.activity-table td {
+    padding: 12px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.activity-table th {
+    color: #475569;
+    font-size: 12px;
+    background: #f8fafc;
+}
+
+.activity-table td {
+    font-size: 13px;
+    color: #475569;
+}
+
+.success-badge,
+.danger-badge {
+    padding: 5px 9px;
+
+    border-radius: 15px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.success-badge {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.danger-badge {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* ========================================
+   SYSTEM CONTROLS
+======================================== */
+
+.system-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 15px;
+}
+
+.control-button {
+    min-width: 90px;
+
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background: #16a34a;
+    color: white;
+
+    transition: all 0.2s ease;
+}
+
+.control-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+.control-button:active {
+    transform: translateY(0);
+}
+
+.control-button.active {
+    background: #16a34a;
+    color: white;
+}
+
+.control-button.control-off {
+    background: #64748b;
+    color: white;
+}
+
+.control-button.danger {
+    background: #dc2626;
+    color: white;
+}
+
+.control-button.danger:hover {
+    background: #b91c1c;
+}
+
+.control-button.warning {
+    background: #f59e0b;
+    color: white;
+}
+
+.control-button.warning:hover {
+    background: #d97706;
+}
+
+/* ========================================
+   EXPORT BUTTON
+======================================== */
+
+.export-button {
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2563eb;
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.export-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    text-align: center;
+
+    padding: 20px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 1100px) {
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-actions {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .header-time {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .dashboard,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-content {
+        padding: 15px;
+    }
+
+    .header {
+        padding: 18px;
+    }
+
+    .admin-profile {
+        padding-left: 10px;
+    }
+
+    .simulate-button,
+    .reset-button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .system-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .control-button,
+    .export-button {
+        width: 100%;
+    }
+}

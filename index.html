@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Security Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <h2>🛡️ Security System</h2>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="#" class="active">🏠 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="#monitor">📹 Live Monitor</a>
+            </li>
+
+            <li>
+                <a href="#activity">📋 Activity Log</a>
+            </li>
+
+            <li>
+                <a href="#system">⚙️ System</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="header">
+
+            <div class="header-title">
+
+                <h1>Home Security Dashboard</h1>
+
+                <p>
+                    Arduino + PIR Sensor Monitoring System
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <!-- Date & Time -->
+
+                <div class="header-time">
+
+                    <span id="date">
+                        Loading...
+                    </span>
+
+                    <span id="time">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <!-- Admin -->
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        👤
+                    </div>
+
+                    <div class="admin-details">
+
+                        <strong>Himanshu Gurjar</strong>
+
+                        <span>● ONLINE</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Logout -->
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="dashboard-content">
+
+
+            <!-- ================= STATUS CARDS ================= -->
+
+            <section class="dashboard">
+
+
+                <!-- System Status -->
+
+                <div class="status-card">
+
+                    <h3>System Status</h3>
+
+                    <h2
+                        id="systemStatus"
+                        class="green-text"
+                    >
+                        SECURE
+                    </h2>
+
+                </div>
+
+
+                <!-- Motion Detection -->
+
+                <div class="status-card">
+
+                    <h3>Motion Detection</h3>
+
+                    <h2 id="motionStatus">
+                        NO MOTION
+                    </h2>
+
+                </div>
+
+
+                <!-- Alarm Status -->
+
+                <div class="status-card">
+
+                    <h3>Alarm Status</h3>
+
+                    <div class="alarm-indicator">
+
+                        <span
+                            id="alarmLight"
+                            class="alarm-light"
+                        ></span>
+
+                        <h2 id="alarmStatus">
+                            OFF
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Motion Events -->
+
+                <div class="status-card">
+
+                    <h3>Motion Events</h3>
+
+                    <h2 id="motionEvents">
+                        0
+                    </h2>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= MONITOR + SYSTEM ================= -->
+
+            <section class="content-grid">
+
+
+                <!-- LIVE MOTION MONITOR -->
+
+                <div
+                    class="panel"
+                    id="monitor"
+                >
+
+                    <div class="monitor-header">
+
+                        <div>
+
+                            <h2>
+                                Live Motion Monitor
+                            </h2>
+
+                            <p>
+                                Real-time PIR sensor monitoring
+                            </p>
+
+                        </div>
+
+                        <span
+                            id="monitorStatus"
+                            class="monitor-status"
+                        >
+                            NORMAL
+                        </span>
+
+                    </div>
+
+
+                    <div class="monitor-box">
+
+                        <div class="monitor-icon">
+                            🛡️
+                        </div>
+
+                        <h2 id="motionTitle">
+                            No Motion Detected
+                        </h2>
+
+                        <p id="motionMessage">
+                            PIR sensor is monitoring the area.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="simulate-button"
+                        onclick="simulateMotion()"
+                    >
+                        🚨 Simulate Motion
+                    </button>
+
+
+                    <button
+                        class="reset-button"
+                        onclick="resetSystem()"
+                    >
+                        🔄 Reset System
+                    </button>
+
+                </div>
+
+
+
+                <!-- SYSTEM INFORMATION -->
+
+                <div
+                    class="panel"
+                    id="system"
+                >
+
+                    <h2>
+                        System Information
+                    </h2>
+
+                    <p>
+                        Current security system configuration
+                    </p>
+
+
+                    <div class="system-info">
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Controller
+                            </span>
+
+                            <span class="info-value">
+                                Arduino
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Sensor
+                            </span>
+
+                            <span class="info-value">
+                                PIR Sensor
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Monitoring
+                            </span>
+
+                            <span class="info-value">
+                                Real-Time
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Security Mode
+                            </span>
+
+                            <span class="info-value">
+                                Night Protection
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                System Version
+                            </span>
+
+                            <span class="info-value">
+                                v1.0
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= LIVE ACTIVITY ================= -->
+
+            <section class="panel live-activity-panel">
+
+                <h2>
+                    Live Motion Activity
+                </h2>
+
+                <p>
+                    Recent security events
+                </p>
+
+
+                <div
+                    id="liveActivityList"
+                    class="live-activity-list"
+                >
+
+                    <div class="empty-activity">
+
+                        <div class="empty-icon">
+                            🛡️
+                        </div>
+
+                        <p>
+                            No motion events recorded yet
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= CHART ================= -->
+
+            <section class="panel chart-panel">
+
+                <h2>
+                    Motion Activity Chart
+                </h2>
+
+                <p>
+                    Motion events over time
+                </p>
+
+
+                <div class="chart-container">
+
+                    <canvas id="motionChart"></canvas>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= STATISTICS ================= -->
+
+            <section class="panel">
+
+                <h2>
+                    Event Statistics
+                </h2>
+
+                <p>
+                    Security system event summary
+                </p>
+
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <h3>
+                            Total Motion Events
+                        </h3>
+
+                        <h2 id="totalMotionEvents">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>
+                            Alarm Activations
+                        </h3>
+
+                        <h2 id="alarmActivations">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>
+                            Normal Events
+                        </h3>
+
+                        <h2 id="normalEvents">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>
+                            Last Motion
+                        </h3>
+
+                        <h2 id="lastMotionTime">
+                            --:--
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= ACTIVITY LOG ================= -->
+
+            <section
+                class="panel"
+                id="activity"
+            >
+
+                <h2>
+                    Activity Log
+                </h2>
+
+                <p>
+                    Complete security system activity
+                </p>
+
+
+                <div class="activity-table-container">
+
+                    <table class="activity-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Time
+                                </th>
+
+                                <th>
+                                    Event
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="activityTable">
+
+                            <tr>
+
+                                <td>
+                                    --:--
+                                </td>
+
+                                <td>
+                                    System initialized
+                                </td>
+
+                                <td>
+
+                                    <span class="success-badge">
+                                        READY
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= SYSTEM CONTROLS ================= -->
+
+            <section class="panel">
+
+                <h2>
+                    System Controls
+                </h2>
+
+                <p>
+                    Manage security system settings
+                </p>
+
+
+                <div class="system-controls">
+
+
+                    <!-- Security -->
+
+                    <div class="control-group">
+
+                        <span>
+                            Security Mode
+                        </span>
+
+                        <button
+                            id="securityToggle"
+                            class="control-button active"
+                        >
+                            ON
+                        </button>
+
+                    </div>
+
+
+                    <!-- Alarm -->
+
+                    <div class="control-group">
+
+                        <span>
+                            Alarm System
+                        </span>
+
+                        <button
+                            id="alarmToggle"
+                            class="control-button active"
+                        >
+                            ON
+                        </button>
+
+                    </div>
+
+
+                    <!-- Clear Log -->
+
+                    <button
+                        id="clearLogButton"
+                        class="control-button danger"
+                    >
+                        Clear Log
+                    </button>
+
+
+                    <!-- Reset Statistics -->
+
+                    <button
+                        id="resetStatsButton"
+                        class="control-button warning"
+                    >
+                        Reset Stats
+                    </button>
+
+
+                    <!-- Export -->
+
+                    <button
+                        class="export-button"
+                        onclick="exportActivityLog()"
+                    >
+                        📥 Export CSV
+                    </button>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
